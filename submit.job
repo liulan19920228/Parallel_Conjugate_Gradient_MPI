@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --job-name="cgsolve"
+#SBATCH --output="cgsolve.%j.%N.out"
+#SBATCH --partition=compute
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --export=ALL
+#SBATCH -t 00:30:00
+#SBATCH -A TG-ASC160059
+#This job runs with 1 node, 8 cores per node for a total of 24 cores.
+#ibrun in verbose mode will give binding detail
+cd /home/$USER/pritha/CS240_conjugate_gradient
+ibrun -v ./cgsolve 144 1
